@@ -32,9 +32,17 @@ The key constraint: the model avoids using any post-ride features preventing dat
 | Drop_Location | Destination location of the ride |
 | Avg_VTAT | Average vehicle time to arrive at pickup (mins) |
 | Avg_CTAT | Average trip duration from pickup to destination (mins) |
+| Cancelled Rides by Customer | Customer cancellation flag |
+| Reason for cancelling by Customer | Customer cancellation reason |
+| Cancelled Rides by Driver | Driver cancellation flag |
+| Driver Cancellation Reason | Driver cancellation reason |
+| Incomplete Rides | Incomplete ride flag |
+| Incomplete Rides Reason | Reason for Incomplete rides |
+| Ride Distance | Distance covered during the ride (km) |
 | Booking_Value | Fare amount  |
 | Driver_Rating | Driver rating |
-| Ride_Distance | Trip distance |
+| Customer_Rating | Customer rating |
+| Payment Method | Payment Method |
 
 ---
 
