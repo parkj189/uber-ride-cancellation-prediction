@@ -50,7 +50,7 @@ The key constraint: the model avoids using any post-ride features preventing dat
 
 ```
 1. Data Overview          → shape, dtypes, basic info
-2. Missing Value Analysis → null patterns, missingno visualization
+2. Missing Value Analysis → null patterns and visualization
 3. Data Preparation       → duplicate analysis, feature engineering, renaming
 4. Univariate Analysis    → booking status, vehicle type distributions
 5. Cancellation Analysis  → reasons, data availability, feature impact
@@ -58,8 +58,7 @@ The key constraint: the model avoids using any post-ride features preventing dat
 7. Data Preprocessing     → feature selection, encoding, train/test split, class weight
 8. Model Training         → Logistic Regression, Random Forest, XGBoost
 9. Model Evaluation       → comparison table, feature importance
-10. Conclusion
-findings, limitations, and potential improvements
+10. Conclusion            → findings, limitations, and potential improvements
 ```
 
 ## 📊 Exploratory Data Analysis (EDA)
@@ -69,15 +68,14 @@ Key observations from the data:
 - Completed rides account for ~62% of bookings, indicating moderate class imbalance  
 - Driver cancellations occur ~2.6× more frequently than customer cancellations  
 - Avg_VTAT shows a clear relationship with cancellations (longer wait → higher cancellation rate)  
-- No single dominant cancellation reason — cancellations are distributed across multiple factors  
-
+- No single dominant cancellation reason, cancellations are distributed across multiple factors  
 These insights guided feature selection and model design.
 ---
-## ⚙️ Methodology
+## ⚙️ Approach
 
 ### Target Variable
 ```
-Is_Cancelled = 1  → Cancelled by Driver / Customer / No Driver Found / Incomplete
+Is_Cancelled = 1  → Cancelled by Driver / Cancelled by Customer / No Driver Found / Incomplete
 Is_Cancelled = 0  → Completed
 ```
 
@@ -95,10 +93,10 @@ Only pre-ride features used to prevent data leakage:
 
 **Excluded (data leakage):** `Booking_Value`, `Ride_Distance`, `Driver_Rating`, `Customer_Rating`, `Avg_CTAT`, `Payment_Method`, cancellation reason columns.
 
-### Preprocessing
-- Train/test split first (80/20, stratified) — before any encoding
-- Target encoding computed on training data only, applied to test
-- Class imbalance (62/38) addressed via `class_weight='balanced'`
+### Model Preparation
+- Train/test split first (80/20, stratified) before any target encoding and imputation
+- Target encoding computed on training data only and applied to test
+- Addressed class imbalance (62/38) addressed by computing class weights using 'compute_class_weight'
 
 ---
 
@@ -111,7 +109,8 @@ Only pre-ride features used to prevent data leakage:
 | **XGBoost** | **0.720** | **0.640** | **0.514** | **0.570** |
 
 **Best Model: XGBoost**
-- Catches **64% of cancellations** using only pre-ride information
+- Highest AUC (0.720) and Recall (0.640) across all metrics
+- Recall improved significantly with imbalance handling
 - Consistent performance with Random Forest confirms result reliability
 
 ---
@@ -119,16 +118,14 @@ Only pre-ride features used to prevent data leakage:
 ## 🔍 Key Findings
 
 **1. Driver cancellations dominate**
-Driver cancellations (18%) occur 2.6x more frequently than customer cancellations (7%) — driver behavior is the primary cancellation signal.
+Driver cancellations (18%) occur 2.6x more frequently than customer cancellations (7%) : driver behavior is the primary cancellation signal.
 
 **2. Avg_VTAT is the strongest predictor**
 Vehicle arrival time dominates feature importance across all three models. Longer wait times directly increase cancellation likelihood.
 
 **3. Temporal and vehicle features are weak**
-Hour, Weekday, and Vehicle_Type show less than 3% variation in cancellation rate — weak individual predictors confirmed by both EDA and feature importance.
+Hour, Weekday, and Vehicle_Type show relatively small variation in cancellation rate and are weak individual predictors confirmed by both EDA and feature importance.
 
-**4. Cancellations are multi-factorial**
-No single dominant reason found — reasons are evenly distributed (~22-25% each), making cancellations inherently situational and harder to predict.
 
 ---
 
@@ -136,11 +133,11 @@ No single dominant reason found — reasons are evenly distributed (~22-25% each
 
 The ~0.72 AUC ceiling is not a modeling failure — it reflects the fundamental constraints of pre-ride prediction:
 
-- Pre-ride features carry weak predictive signal by nature
-- Most informative features (Driver_Rating, Booking_Value) are post-ride only — including them would constitute data leakage
+- Pre-ride features carry weak predictive signal
+- Most informative features (Driver_Rating, Booking_Value) are provided after completing ride. Thus, including them would constitute data leakage. 
 - Cancellations are situational with no single dominant pattern
 
-**Performance could improve with:**
+**Performance could improve with more predictive features:**
 - Customer cancellation history
 - Driver reliability / acceptance rate
 - Real-time traffic and weather conditions
