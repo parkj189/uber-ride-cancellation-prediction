@@ -139,27 +139,6 @@ The ~0.72 AUC ceiling is not a modeling failure — it reflects the fundamental 
 
 ---
 
-## 💡 Business Recommendation
-
-- **Reduce Avg_VTAT** — shorter driver arrival time is the single most impactful lever to reduce cancellations
-- **Location-based intervention** — flag high-risk pickup zones for proactive driver allocation
-- **Model deployment** — XGBoost can score rides at booking time to trigger early intervention for high-risk rides
-
----
-
-## 🛠️ Tech Stack
-
-| Tool | Purpose |
-|------|---------|
-| Python 3.13 | Core language |
-| pandas / numpy | Data manipulation |
-| matplotlib / seaborn | Visualizations |
-| missingno | Missing value analysis |
-| scikit-learn | Preprocessing, LR, RF, evaluation |
-| XGBoost | Gradient boosting model |
-
----
-
 ## 🚀 How to Run
 
 ```bash
@@ -174,15 +153,4 @@ pip install pandas numpy matplotlib seaborn missingno scikit-learn xgboost plotl
 
 # 4. Open and run the notebook
 jupyter notebook Uber_Cancellation.ipynb
-```
-
----
-
-## 📁 Repository Structure
-
-```
-uber-cancellation-prediction/
-├── Uber_Cancellation.ipynb    # Main notebook
-├── README.md                  # This file
-└── ncr_ride_bookings.csv      # Dataset (download from Kaggle)
 ```
