@@ -55,10 +55,11 @@ The key constraint: the model avoids using any post-ride features preventing dat
 4. Univariate Analysis    → booking status, vehicle type distributions
 5. Cancellation Analysis  → reasons, data availability, feature impact
 6. Key Findings           → EDA summary, ML motivation
-7. Data Preprocessing     → feature selection, encoding, train/test split
+7. Data Preprocessing     → feature selection, encoding, train/test split, class weight
 8. Model Training         → Logistic Regression, Random Forest, XGBoost
-9. Model Evaluation       → comparison table, ROC curves, feature importance
-10. Conclusion            → findings, limitations, recommendations
+9. Model Evaluation       → comparison table, feature importance
+10. Conclusion
+findings, limitations, and potential improvements
 ```
 
 ## 📊 Exploratory Data Analysis (EDA)
