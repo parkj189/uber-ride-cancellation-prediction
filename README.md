@@ -148,15 +148,11 @@ The moderate performance is not a modelling failure rather it reflects the funda
 ## 🚀 How to Run
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/yourusername/uber-cancellation-prediction
+# 1. Download the dataset from:
+https://www.kaggle.com/datasets/yashdevladdha/uber-ride-analytics-dashboard/data
 
-# 2. Install dependencies
-pip install pandas numpy matplotlib seaborn missingno scikit-learn xgboost plotly
+# 2. Place `ncr_ride_bookings.csv` in the project folder
 
-# 3. Download dataset from Kaggle
-# Place ncr_ride_bookings.csv in the project folder
-
-# 4. Open and run the notebook
+# 3. Open and run the notebook
 jupyter notebook Uber_Cancellation.ipynb
 ```
