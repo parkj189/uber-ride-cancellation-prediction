@@ -53,8 +53,17 @@ The key constraint: the model avoids using any post-ride features preventing dat
 10. Conclusion            → findings, limitations, recommendations
 ```
 
----
+## 📊 Exploratory Data Analysis (EDA)
 
+Key observations from the data:
+
+- Completed rides account for ~62% of bookings, indicating moderate class imbalance  
+- Driver cancellations occur ~2.6× more frequently than customer cancellations  
+- Avg_VTAT shows a clear relationship with cancellations (longer wait → higher cancellation rate)  
+- No single dominant cancellation reason — cancellations are distributed across multiple factors  
+
+These insights guided feature selection and model design.
+---
 ## ⚙️ Methodology
 
 ### Target Variable
