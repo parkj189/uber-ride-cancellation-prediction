@@ -131,7 +131,7 @@ Hour, Weekday, and Vehicle_Type show relatively small variation in cancellation 
 
 ## ⚠️ Model Limitations
 
-The ~0.72 AUC ceiling is not a modeling failure — it reflects the fundamental constraints of pre-ride prediction:
+The moderate performance is not a modelling failure rather it reflects the fundamental constraints of pre-ride prediction:
 
 - Pre-ride features carry weak predictive signal
 - Most informative features (Driver_Rating, Booking_Value) are provided after completing ride. Thus, including them would constitute data leakage. 
