@@ -1,14 +1,15 @@
 # 🚗 Uber Ride Cancellation Prediction
 **Author:** Junghoon Park
-End-to-end data analytics and machine learning project to predict ride cancellations using the Uber NCR Ride Bookings dataset.
+
+**Project:** End-to-end data analytics and machine learning project to predict ride cancellations using the Uber NCR Ride Bookings dataset.
 
 ---
 
 ## 📌 Project Overview
 
-Ride cancellations are a major operational challenge for ride-hailing platforms. This project builds a **pre-ride cancellation prediction system** — identifying high-risk rides at booking time using only information available before the ride begins.
+Ride cancellations are a common issue for ride-hailing platforms. This project builds a **pre-ride cancellation prediction system** that identifies high-risk rides at booking time using only information available before the ride begins.
 
-The key constraint: **no post-ride features are used**, ensuring the model is deployable in a real production environment without data leakage.
+The key constraint: the model avoids using any post-ride features preventing data leakage and keeping the system deployable in practice.
 
 ---
 
@@ -21,17 +22,19 @@ The key constraint: **no post-ride features are used**, ensuring the model is de
 
 | Column | Description |
 |--------|-------------|
-| Booking_Status | Ride outcome (Completed, Cancelled by Driver/Customer, etc.) |
-| Vehicle_Type | Type of vehicle booked |
-| Pickup_Location | Pickup zone |
-| Drop_Location | Drop zone |
+| Date | Date of the booking |
+| Time | Time of the booking |
+| Booking ID | Unique identifer for each booking |
+| Booking_Status | Status of booking (Completed, Cancelled by Driver/Customer, etc.) |
+| Customer ID | Unique identifier for customers |
+| Vehicle_Type | Type of vehicle |
+| Pickup_Location | Starting location of the ride |
+| Drop_Location | Destination location of the ride |
 | Avg_VTAT | Average vehicle time to arrive at pickup (mins) |
-| Avg_CTAT | Average customer time to arrive at pickup (mins) |
-| Hour | Hour of booking |
-| Weekday | Day of the week |
-| Booking_Value | Fare amount (post-ride only) |
-| Driver_Rating | Driver rating (post-ride only) |
-| Ride_Distance | Trip distance (post-ride only) |
+| Avg_CTAT | Average trip duration from pickup to destination (mins) |
+| Booking_Value | Fare amount  |
+| Driver_Rating | Driver rating |
+| Ride_Distance | Trip distance |
 
 ---
 
