@@ -1,5 +1,5 @@
 # 🚗 Uber Ride Cancellation Prediction
-
+**Author:** Junghoon Park
 End-to-end data analytics and machine learning project to predict ride cancellations using the Uber NCR Ride Bookings dataset.
 
 ---
